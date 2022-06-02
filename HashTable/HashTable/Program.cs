@@ -37,10 +37,43 @@ switch (choice)
                 map.add(word, 1);
             }
         }
-        Console.WriteLine($"{"Frequency",20} | {"Count",10}\n");
+        Console.WriteLine("Frequency-->Count");
         foreach (string key in dist)
         {
-            Console.WriteLine($"{key,20} | {map.GetValue(key),10}");
+            Console.WriteLine(key + "-->" + map.GetValue(key));
         }
         break;
+    case 3:
+        string phrase1 = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+        string[] words1 = phrase1.ToLower().Split(" ");
+        var dist1 = words1.Distinct();
+        int length1 = 0;
+        foreach (var word in dist1)
+            length1++;
+        HashTable.MyMapNode<string, int> map1 = new HashTable.MyMapNode<string, int>(length1);
+        int count1 = 1;
+        foreach (string word in words1)
+        {
+            if (word == "avoidable")
+            {
+                continue;
+            }
+            else if (map1.ContainsKey(word))
+            {
+                count = map1.GetValue(word) + 1;
+                map1.Remove(word);
+                map1.add(word, count);
+            }
+            else
+            {
+                map1.add(word, 1);
+            }
+        }
+        Console.WriteLine("Frequency-->Count");
+        foreach (string key in dist1)
+        {
+            Console.WriteLine(key +"-->"+ map1.GetValue(key));
+        }
+        break;
+
 }
